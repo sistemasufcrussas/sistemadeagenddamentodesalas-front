@@ -1,82 +1,134 @@
-# Sistema de Agendamentos de Espaços Universitários
+# 🏛️ Sistema de Agendamento de Espaços Universitários (SIRU)
 
-Sistema de login e autenticação para agendamentos de espaços universitários desenvolvido em React.
+Sistema completo de gerenciamento de reservas de espaços universitários desenvolvido em React (frontend) e Next.js (backend).
 
-## Funcionalidades
+## 🚀 Arquitetura
 
-- **Página de Login**: Interface moderna e responsiva com formulário de autenticação
-- **Autenticação**: Sistema de login com contexto React e localStorage
-- **Rotas Protegidas**: Redirecionamento automático para usuários não autenticados
-- **Dashboard**: Página principal do sistema após login
-- **Design System**: Cores e tipografia padronizadas
+Este projeto está dividido em dois repositórios separados:
 
-## Tecnologias Utilizadas
+- **Frontend (React + Vite)**: Deploy no **Vercel**
+  - Repositório: `sistemadeagenddamentodesalas-front`
+  - URL: https://github.com/sistemasufcrussas/sistemadeagenddamentodesalas-front.git
 
+- **Backend (Next.js API)**: Deploy no **Render**
+  - Repositório: `sistemadeagenddamentodesalas`
+  - URL: https://github.com/sistemasufcrussas/sistemadeagenddamentodesalas.git
+
+**Conta de deploy**: sistemaufcrussas@gmail.com
+
+## 📋 Funcionalidades
+
+- ✅ Sistema de autenticação com JWT
+- ✅ Gerenciamento de usuários (Admin, Professor, Coordenador, Aluno, Portaria)
+- ✅ Reserva de salas e espaços
+- ✅ Sistema de aprovação de reservas
+- ✅ Gerenciamento de projetos e alunos
+- ✅ Notificações e logs de auditoria
+- ✅ Dashboard personalizado por tipo de usuário
+
+## 🛠️ Tecnologias
+
+### Frontend
 - React 18
 - React Router DOM
 - Tailwind CSS
 - Vite
+- Radix UI
+- Framer Motion
 
-## Instalação
+### Backend
+- Next.js 14
+- PostgreSQL (Neon)
+- JWT Authentication
+- Node.js
 
-1. Clone o repositório
-2. Instale as dependências:
+## 📦 Instalação
+
+### Frontend
 
 ```bash
 npm install
-```
-
-3. Execute o projeto:
-
-```bash
 npm run dev
 ```
 
-## Estrutura do Projeto
+### Backend
 
-```
-src/
-├── components/
-│   └── ProtectedRoute.jsx    # Componente para rotas protegidas
-├── context/
-│   └── AuthContext.jsx       # Contexto de autenticação
-├── pages/
-│   ├── login/
-│   │   └── Login.jsx         # Página de login
-│   └── dashboard/
-│       └── Dashboard.jsx     # Página principal
-├── App.jsx                   # Configuração de rotas
-├── main.jsx                  # Ponto de entrada
-└── index.css                 # Estilos globais
+Veja o README no repositório do backend para instruções completas.
+
+## 🔧 Configuração
+
+### Variáveis de Ambiente
+
+#### Frontend (.env)
+```env
+VITE_API_URL=https://seu-backend.onrender.com
 ```
 
-## Especificações do Design
+#### Backend (.env.local)
+```env
+DATABASE_URL=sua-connection-string-postgresql
+JWT_SECRET=seu-jwt-secret
+ALLOWED_ORIGIN=https://seu-frontend.vercel.app
+NODE_ENV=production
+```
 
-### Página de Login (Desktop)
+## 📡 Endpoints da API
 
-- **Container**: 380px de largura, border-radius 20px no topo esquerdo
-- **Padding**: 140px nas laterais, 48px em cima/baixo
-- **Formulário**: 400px x 347px, border-radius 10px
-- **Fonte**: Lato (Bold para títulos, Regular para subtítulos)
-- **Cores**:
-  - Azul escuro: #2E3DA3
-  - Cinza escuro: #1E2024
-  - Cinza médio: #535964
-  - Cinza claro: #858B99
+### Autenticação
+- `POST /api/auth/login` - Login
+- `POST /api/auth/register` - Registro
+- `GET /api/auth/verify` - Verificar token
 
-## Uso
+### Usuários
+- `GET /api/users` - Listar usuários
+- `GET /api/users/pending` - Usuários pendentes
+- `POST /api/users/approve` - Aprovar usuário
 
-1. Acesse a aplicação
-2. Se não estiver logado, será redirecionado para `/login`
-3. Preencha email e senha
-4. Após login, será redirecionado para `/dashboard`
-5. Use o botão "Sair" para fazer logout
+### Salas
+- `GET /api/rooms` - Listar salas
+- `GET /api/rooms/[id]` - Detalhes da sala
 
-## Próximos Passos
+### Reservas
+- `GET /api/reservations` - Listar reservas
+- `POST /api/reservations` - Criar reserva
+- `GET /api/reservations/pending` - Reservas pendentes
+- `POST /api/reservations/approve` - Aprovar reserva
 
-- Integração com API de autenticação
-- Validação de formulários
-- Recuperação de senha
-- Registro de usuários
-- Responsividade mobile
-# sistema-de-agendamento-de-espacos-universit-rios
+## 👥 Tipos de Usuário
+
+- **Admin**: Acesso total ao sistema
+- **Coordenador**: Aprovação de reservas e usuários
+- **Professor**: Criação de projetos e reservas
+- **Aluno**: Visualização e participação em projetos
+- **Portaria**: Visualização de reservas aprovadas
+
+## 📝 Scripts
+
+```bash
+npm run dev      # Desenvolvimento
+npm run build    # Build para produção
+npm run preview  # Preview do build
+npm run lint     # Linter
+```
+
+## 🔐 Segurança
+
+- Senhas criptografadas com bcrypt
+- Tokens JWT com expiração
+- CORS configurado
+- Validação de entrada
+- Logs de auditoria
+
+## 📚 Documentação
+
+Para mais detalhes sobre a arquitetura e deploy, consulte:
+- `ARQUITETURA.md` - Detalhes sobre a separação frontend/backend
+
+## 🤝 Contribuição
+
+Este projeto foi desenvolvido para o Sistema de Reservas Universitário (SIRU).
+
+---
+
+**Desenvolvido para Sistemas UFC Russas**  
+*Email: sistemaufcrussas@gmail.com*
