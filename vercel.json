@@ -1,9 +1,16 @@
 {
   "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": null,
   "builds": [
     {
       "src": "backend/package.json",
-      "use": "@vercel/next"
+      "use": "@vercel/next",
+      "config": {
+        "zeroConfig": false,
+        "distDir": ".next"
+      }
     },
     {
       "src": "package.json",
@@ -15,10 +22,14 @@
   ],
   "routes": [
     {
+      "src": "/api/(.*)",
+      "dest": "/backend/$1"
+    },
+    {
       "handle": "filesystem"
     },
     {
-      "src": "/((?!api).*)",
+      "src": "/(.*)",
       "dest": "/index.html"
     }
   ]
