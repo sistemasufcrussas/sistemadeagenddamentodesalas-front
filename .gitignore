@@ -94,3 +94,6 @@ temp/
 
 # Local Netlify folder
 .netlify
+
+# Backend folder (separate repository)
+backend/
